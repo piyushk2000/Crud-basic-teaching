@@ -48,7 +48,16 @@ const deleteNote = async (req, res) => {
     }
 };
 
+const getAllNotes = async (req, res) => {
+    try {
+        const notes = await Notes.find();
+        res.status(200).json(notes);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
 
 
 
-export {createNote ,updateNote , getNote, deleteNote}
+
+export {createNote ,updateNote , getNote, deleteNote, getAllNotes}
